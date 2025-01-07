@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Create root directory
+mkdir -p my-ansible-project
+cd my-ansible-project
+
+# Create basic structure
+mkdir -p inventories/production inventories/staging
+mkdir -p group_vars host_vars
+mkdir -p roles/webserver/{tasks,handlers,templates,files,vars}
+mkdir -p playbooks files templates
+
+# Create core files
+touch ansible.cfg README.md
+
+# Create sample inventory files
+touch inventories/production/hosts
+touch inventories/staging/hosts
+
+# Create sample group_vars and host_vars files
+touch group_vars/all.yml
+touch host_vars/webserver1.yml
+
+# Create a sample role task
+echo "---" > roles/webserver/tasks/main.yml
+echo "name: Install nginx" >> roles/webserver/tasks/main.yml
+echo "  ansible.builtin.yum:" >> roles/webserver/tasks/main.yml
+echo "    name: nginx" >> roles/webserver/tasks/main.yml
+echo "    state: present" >> roles/webserver/tasks/main.yml
+
+echo "Ansible project structure created successfully!"
+
